@@ -9,16 +9,14 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="logo.ico" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <script src="script.js"></script>
 </head>
 <body>
-    <nav>
+    <nav id="navigation">
         <div class="logo">
             <img src="/img/nav-logo.png" alt="logo">
             StartupLanding
         </div>
-        <div id="nav">
-            <ol id="nav-list">
+            <ol class="nav-list">
                 <li class="nav-element">
                     <a href="#" class="nav-href">Pricing</a>
                 </li>
@@ -34,7 +32,8 @@
             </ol>
         </div>
         <div id="menu">
-            <i class="ri-menu-line"></i>
+            <i class="ri-menu-line open-menu active-button-menu"></i>
+            <i class="ri-close-line close-menu"></i>
         </div>
     </nav>
 <main>
@@ -160,6 +159,7 @@
             </div>
         </div>
     </section>
+</main>
     <footer>
         <div id="footer-flex">
             <ol class="footer-list">
@@ -248,6 +248,6 @@
             </ol>
         </div>
     </footer>
-</main>
 </body>
+<script src="script.js"></script>
 </html>

@@ -1,9 +1,23 @@
+/*
+For Mobile devices: 320px-480px
+For Tablets or iPad: 480px - 768px
+For Laptop or small-size screen: 768px -1024px
+For Desktop or large-size screen: 1024px -1200px
+For Extra-large size device: 1200px and more
+*/
+
 @mixin google-font($family) {
     @import url("https://fonts.googleapis.com/css2?family=#{$family}:wght@200;300;400;500&display=swap");
 }
 @include google-font('Bree+Serif');
 @include google-font('DM+Sans');
 @include google-font('Roboto+Slab');
+
+$bref: 'Bree Serif';
+$black: #000000;
+$white: #ffffff;
+$grey: #F9FAFC;
+$mainColor: #F94962;
 
 body {
     font-family: 'DM Sans';
@@ -18,13 +32,13 @@ ol {
 }
 
 // <----------------- Nav ----------------->
-nav {
+#navigation {
     font-size: 1em;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    height: 4vw;
+    height: 6vw;
 }
 
 .logo {
@@ -40,7 +54,7 @@ nav {
     }
 }
 
-#nav-list {
+.nav-list {
     display: flex;
     flex-direction: row;
 }
@@ -51,12 +65,12 @@ nav {
 
 .nav-href {
     text-decoration: none;
-    color: #000;
+    color: $black;
     transition: color 0.2s;
 }
 
 .nav-href:hover {
-    color: #F94962;
+    color: $mainColor;
     position: relative;
 }
 
@@ -81,7 +95,7 @@ nav {
     position: absolute;
     width: 100%;
     height: 0.5em;
-    background-color: #FFF;
+    background-color: $white;
     left: 0;
     bottom: -1vw;
     transition: all 0.5s;
@@ -94,8 +108,41 @@ nav {
 
 #menu {
     display: none;
+    position: relative;
+    z-index: 100;
     cursor: pointer;
 }
+
+.open-menu {
+    position: absolute;
+    opacity: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 1s;
+    font-size: 2.5em;
+}
+
+.close-menu {
+    position: absolute;
+    color: $white;
+    opacity: 0;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 1s, color 0.5s;
+    font-size: 3em;
+}
+
+.close-menu:hover {
+    color: $mainColor;
+}
+
+.active-button-menu {
+    opacity: 1;
+}
+
+
 
 // <----------------- Welcome section ----------------->
 #welcome {
@@ -124,7 +171,7 @@ nav {
     font-size: 0.9em;
 
     h1 {
-        font-family: 'Bree Serif';
+        font-family: $bref;
         font-size: 3.2em;
         margin-bottom: 0;
     }
@@ -144,7 +191,7 @@ nav {
 #email-welcome-input {
     border: #D4DAE2 solid 0.1em;
     border-radius: 0.3em;
-    background-color: #fff;
+    background-color: $white;
     padding: 0 1.5em;
     width: 70%;
     font-size: 0.9em;
@@ -152,8 +199,8 @@ nav {
 }
 
 #btn-welcome-input {
-    color: #fff;
-    background-color: #F94962;
+    color: $white;
+    background-color: $mainColor;
     border: 0;
     border-radius: 0.3em;
     width: 27%;
@@ -195,7 +242,7 @@ nav {
     margin-bottom: 10vw;
 
     h2 {
-        font-family: 'Bree Serif';
+        font-family: $bref;
         font-size: 1.5em;
         margin: 0;
     }
@@ -255,7 +302,7 @@ nav {
     justify-content: center;
     margin: 6vw 0 7vw;
     padding: 4vw 0 12vw;
-    background-color: #F9FAFC;
+    background-color: $grey;
     position: relative;
 
     img {
@@ -387,7 +434,7 @@ img#boost-curve {
 
 // <----------------- Work together section ----------------->
 #work-together {
-    background-color: #F9FAFC;
+    background-color: $grey;
     padding: 6vw 0 10vw;
 }
 
@@ -432,13 +479,13 @@ img#boost-curve {
     column-gap: 3%;
     align-items: center;
     background-color: #183656;
-    color: #fff;
+    color: $white;
     position: absolute;
     bottom: -18%;
 
     h3 {
         grid-area: contact-text;
-        font-family: 'Bree Serif';
+        font-family: $bref;
         margin: 0;
         font-size: 1.9em;
         font-weight: 400;
@@ -457,7 +504,7 @@ img#contact-arrow {
     position: relative;
 
     input {
-        background-color: #fff;
+        background-color: $white;
         font-size: 1em;
         padding: 0.9em 2.1em;
         border: 0;
@@ -467,7 +514,7 @@ img#contact-arrow {
         font-family: 'DM Sans';
 
         &:hover {
-            background-color: #F9FAFC;
+            background-color: $grey;
             transform: scale(1.05);
         }
     }
@@ -499,7 +546,7 @@ img#contact-arrow {
 
 // <----------------- Footer ----------------->
 footer {
-    background-color: #F9FAFC;
+    background-color: $grey;
     padding: 10vw 0 5vw;
 }
 
@@ -524,7 +571,7 @@ footer {
 
     a {
         text-decoration: none;
-        color: #000;
+        color: $black;
         display: flex;
         align-items: center;
     }
@@ -543,10 +590,40 @@ footer {
     opacity: 0.6;
 }
 
+// <----------------- Width device 1200px ----------------->
+@media only screen and (max-width: 1200px) {
+    #welcome {
+            grid-template-columns: 35vw 38vw;
+            column-gap: 3vw;
+
+            img {
+                width: 120%;
+            }
+        }
+
+        .section-text {
+            h1 {
+                font-size: 3em;
+            }
+        }
+
+        #sponsor {
+            font-size: 0.8em;
+        }
+
+        .sponsor-element {
+            width: 15%;
+        }
+
+        #team {
+            margin-bottom: 6vw;
+        }
+}
+
 // <----------------- Orientation Portrait ----------------->
 @media only screen and (orientation: portrait) {
-    nav {
-        height: 10vw;
+    #navigation {
+        height: 15vw;
         position: relative;
     }
 
@@ -560,22 +637,29 @@ footer {
 
     #menu {
         display: block;
-        font-size: 2em;
     }
 
-    #nav-list {
-        display: flex;
+    .nav-list {
         position: fixed;
+        flex-direction: column;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        //width: 100vw;
-        //height: 100vh;
+        width: 100vw;
+        height: 100vh;
         font-size: 2em;
-        //background-color: #000;
+        background-color: $black;
         left: 0;
         top: 0;
         z-index: 10;
+        transition: all 1s;
+        transform: translateX(-200%);
+        opacity: 0;
+    }
+
+    .active {
+        transform: translateX(0);
+        opacity: 1;
     }
 
     .nav-element {
@@ -583,7 +667,7 @@ footer {
     }
 
     .nav-href {
-        color: #fff;
+        color: $white;
     }
 
     .nav-href:hover::before {
@@ -591,21 +675,9 @@ footer {
     }
 
     .nav-href::after {
-        background-color: #000;
+        background-color: $black;
         bottom: -3vw;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 // <----------------- Welcome section ----------------->
     #welcome {
@@ -629,6 +701,14 @@ footer {
         p {
             font-size: 1.4em;
         }
+    }
+
+    #sponsor {
+        font-size: 1em;
+    }
+
+    .sponsor-element {
+        width: 20%;
     }
 
 // <----------------- Section flex / grid ----------------->
@@ -759,8 +839,7 @@ footer {
         }
 
         img {
-            width: 90%;
-            transform: translateX(0);
+            width: 80%;
         }
     }
 
@@ -784,7 +863,7 @@ footer {
         margin-top: 20vw;
         font-size: 1em;
         position: relative;
-        margin-bottom: 25vw;
+        margin-bottom: 18vw;
 
         h2 {
             font-size: 1.6em;
@@ -828,7 +907,7 @@ footer {
         justify-self: center;
 
         input {
-            background-color: #fff;
+            background-color: $white;
             font-size: 0.9em;
             padding: 0.8em 2.1em;
         }
@@ -843,6 +922,15 @@ footer {
     #footer-flex {
         display: flex;
         justify-content: center;
+    }
+
+    .footer-logo {
+        font-size: 1em;
+
+        img {
+                width: 1.5vw;
+                margin-right: 1vw;
+            }
     }
 
     .footer-list {

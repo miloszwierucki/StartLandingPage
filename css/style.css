@@ -1,3 +1,10 @@
+/*
+For Mobile devices: 320px-480px
+For Tablets or iPad: 480px - 768px
+For Laptop or small-size screen: 768px -1024px
+For Desktop or large-size screen: 1024px -1200px
+For Extra-large size device: 1200px and more
+*/
 @import url("https://fonts.googleapis.com/css2?family=Bree+Serif:wght@200;300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;300;400;500&display=swap");
@@ -13,13 +20,13 @@ ol {
   list-style-type: none;
 }
 
-nav {
+#navigation {
   font-size: 1em;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  height: 4vw;
+  height: 6vw;
 }
 
 .logo {
@@ -34,7 +41,7 @@ nav {
   margin-right: 1vw;
 }
 
-#nav-list {
+.nav-list {
   display: flex;
   flex-direction: row;
 }
@@ -45,7 +52,7 @@ nav {
 
 .nav-href {
   text-decoration: none;
-  color: #000;
+  color: #000000;
   transition: color 0.2s;
 }
 
@@ -75,7 +82,7 @@ nav {
   position: absolute;
   width: 100%;
   height: 0.5em;
-  background-color: #FFF;
+  background-color: #ffffff;
   left: 0;
   bottom: -1vw;
   transition: all 0.5s;
@@ -88,7 +95,38 @@ nav {
 
 #menu {
   display: none;
+  position: relative;
+  z-index: 100;
   cursor: pointer;
+}
+
+.open-menu {
+  position: absolute;
+  opacity: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 1s;
+  font-size: 2.5em;
+}
+
+.close-menu {
+  position: absolute;
+  color: #ffffff;
+  opacity: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 1s, color 0.5s;
+  font-size: 3em;
+}
+
+.close-menu:hover {
+  color: #F94962;
+}
+
+.active-button-menu {
+  opacity: 1;
 }
 
 #welcome {
@@ -130,7 +168,7 @@ nav {
 #email-welcome-input {
   border: #D4DAE2 solid 0.1em;
   border-radius: 0.3em;
-  background-color: #fff;
+  background-color: #ffffff;
   padding: 0 1.5em;
   width: 70%;
   font-size: 0.9em;
@@ -138,7 +176,7 @@ nav {
 }
 
 #btn-welcome-input {
-  color: #fff;
+  color: #ffffff;
   background-color: #F94962;
   border: 0;
   border-radius: 0.3em;
@@ -381,7 +419,7 @@ img#boost-curve {
   column-gap: 3%;
   align-items: center;
   background-color: #183656;
-  color: #fff;
+  color: #ffffff;
   position: absolute;
   bottom: -18%;
 }
@@ -404,7 +442,7 @@ img#contact-arrow {
   position: relative;
 }
 #contact-btn input {
-  background-color: #fff;
+  background-color: #ffffff;
   font-size: 1em;
   padding: 0.9em 2.1em;
   border: 0;
@@ -467,7 +505,7 @@ footer {
 }
 .footer-element a {
   text-decoration: none;
-  color: #000;
+  color: #000000;
   display: flex;
   align-items: center;
 }
@@ -484,9 +522,30 @@ footer {
   opacity: 0.6;
 }
 
+@media only screen and (max-width: 1200px) {
+  #welcome {
+    grid-template-columns: 35vw 38vw;
+    column-gap: 3vw;
+  }
+  #welcome img {
+    width: 120%;
+  }
+  .section-text h1 {
+    font-size: 3em;
+  }
+  #sponsor {
+    font-size: 0.8em;
+  }
+  .sponsor-element {
+    width: 15%;
+  }
+  #team {
+    margin-bottom: 6vw;
+  }
+}
 @media only screen and (orientation: portrait) {
-  nav {
-    height: 10vw;
+  #navigation {
+    height: 15vw;
     position: relative;
   }
   .logo {
@@ -497,30 +556,39 @@ footer {
   }
   #menu {
     display: block;
-    font-size: 2em;
   }
-  #nav-list {
-    display: flex;
+  .nav-list {
     position: fixed;
+    flex-direction: column;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100vw;
+    height: 100vh;
     font-size: 2em;
+    background-color: #000000;
     left: 0;
     top: 0;
     z-index: 10;
+    transition: all 1s;
+    transform: translateX(-200%);
+    opacity: 0;
+  }
+  .active {
+    transform: translateX(0);
+    opacity: 1;
   }
   .nav-element {
     padding: 3vw 0;
   }
   .nav-href {
-    color: #fff;
+    color: #ffffff;
   }
   .nav-href:hover::before {
     bottom: -3vw;
   }
   .nav-href::after {
-    background-color: #000;
+    background-color: #000000;
     bottom: -3vw;
   }
   #welcome {
@@ -537,6 +605,12 @@ footer {
   }
   .section-text p {
     font-size: 1.4em;
+  }
+  #sponsor {
+    font-size: 1em;
+  }
+  .sponsor-element {
+    width: 20%;
   }
   .section-flex-column p {
     width: 80%;
@@ -629,8 +703,7 @@ footer {
     margin-bottom: 5vw;
   }
   #users img {
-    width: 90%;
-    transform: translateX(0);
+    width: 80%;
   }
   #work-together {
     padding: 12vw 0 10vw;
@@ -647,7 +720,7 @@ footer {
     margin-top: 20vw;
     font-size: 1em;
     position: relative;
-    margin-bottom: 25vw;
+    margin-bottom: 18vw;
   }
   #team h2 {
     font-size: 1.6em;
@@ -680,7 +753,7 @@ footer {
     justify-self: center;
   }
   #contact-btn input {
-    background-color: #fff;
+    background-color: #ffffff;
     font-size: 0.9em;
     padding: 0.8em 2.1em;
   }
@@ -691,6 +764,13 @@ footer {
   #footer-flex {
     display: flex;
     justify-content: center;
+  }
+  .footer-logo {
+    font-size: 1em;
+  }
+  .footer-logo img {
+    width: 1.5vw;
+    margin-right: 1vw;
   }
   .footer-list {
     padding: 0 2vw;
