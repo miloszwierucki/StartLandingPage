@@ -544,6 +544,9 @@ footer {
   }
 }
 @media only screen and (orientation: portrait) {
+  .active-body {
+    overflow: hidden;
+  }
   #navigation {
     height: 15vw;
     position: relative;
